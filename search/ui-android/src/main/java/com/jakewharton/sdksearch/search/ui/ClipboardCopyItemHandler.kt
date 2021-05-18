@@ -7,7 +7,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.content.getSystemService
 import com.jakewharton.sdksearch.store.item.Item
-
+//
 class ClipboardCopyItemHandler(
   private val context: Context
 ) : ItemHandler {

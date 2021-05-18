@@ -9,7 +9,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import com.jakewharton.sdksearch.reference.AndroidReference
 import com.jakewharton.sdksearch.store.item.Item
-
+//
 class OpenDocumentationItemHandler(private val context: Context) : ItemHandler {
   override fun invoke(item: Item) {
     val uri = item.link.toUri()

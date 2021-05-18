@@ -19,7 +19,7 @@ import androidx.core.text.toSpannable
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.jakewharton.sdksearch.store.item.Item
 import kotlin.LazyThreadSafetyMode.NONE
-
+//
 internal class ItemResultViewHolder(
   private val root: View,
   private val callback: ItemResultAdapter.Callback

@@ -3,7 +3,7 @@ package com.jakewharton.sdksearch.search.ui
 import android.app.Activity
 import androidx.core.app.ShareCompat.IntentBuilder
 import com.jakewharton.sdksearch.store.item.Item
-
+//
 class ShareItemHandler(
   private val activity: Activity
 ) : ItemHandler {

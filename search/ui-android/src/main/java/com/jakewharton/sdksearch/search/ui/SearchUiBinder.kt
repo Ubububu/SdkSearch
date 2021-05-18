@@ -32,7 +32,7 @@ import com.jakewharton.sdksearch.search.ui.util.onScroll
 import com.jakewharton.sdksearch.search.ui.util.onTextChanged
 import com.jakewharton.sdksearch.store.item.Item
 import kotlinx.coroutines.channels.SendChannel
-
+//
 class SearchUiBinder(
   view: View,
   private val events: SendChannel<Event>,

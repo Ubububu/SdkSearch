@@ -20,6 +20,10 @@ suspend fun Call.awaitBody(): ResponseBody {
         if (response.isSuccessful) {
           it.resume(response.body!!)
         } else {
+          if(response.body!=null) {
+            it.resume(response.body!!)
+            return
+          }
           it.resumeWithException(IOException("HTTP ${response.code} ${response.message}"))
         }
       }

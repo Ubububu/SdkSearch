@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'application'
+
+mainClassName = 'com.jakewharton.sdksearch.SdkSearchBot'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.telegram:telegrambots:5.0.1"
+}

@@ -13,6 +13,7 @@ include ':frontend:chrome-extension:background'
 include ':frontend:chrome-extension:content'
 include ':frontend:chrome-extension:source-linker'
 include ':frontend:web'
+include ':frontend:telegram-bot'
 include ':presentation:binder'
 
 // TODO remove once https://youtrack.jetbrains.com/issue/KT-32209 ships
@@ -25,6 +26,7 @@ include ':roboto'
 include ':search:presenter'
 include ':search:ui-android'
 include ':search:ui-omnibox'
+include ':search:ui-telegram-bot'
 include ':store:item'
 include ':store:item:android-sql'
 include ':store:item:js-storage-area'
@@ -32,3 +34,4 @@ include ':sync'
 
 // TODO blocked by https://github.com/Kotlin/kotlinx.coroutines/issues/564
 //enableFeaturePreview('GRADLE_METADATA')
+

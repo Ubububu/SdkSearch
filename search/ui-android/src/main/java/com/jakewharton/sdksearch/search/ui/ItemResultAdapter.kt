@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import com.jakewharton.sdksearch.store.item.Item
-
+//
 internal class ItemResultAdapter(
   private val inflater: LayoutInflater,
   private val callback: Callback
