@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.OkHttpClient.Builder
@@ -41,7 +42,11 @@ internal object CircleCiModule {
     val retrofit = Retrofit.Builder()
         .baseUrl("https://circleci.com/api/v1.1/")
         .client(client)
-        .addConverterFactory(Json.nonstrict.asConverterFactory("application/json".toMediaType()))
+        // TODO было nonstrict, но после обновления библиотеки оно было заменено на три других флага
+        .addConverterFactory(Json {
+          isLenient = true
+          ignoreUnknownKeys = true
+        }.asConverterFactory("application/json".toMediaType()))
         .build()
 
     return retrofit.create()

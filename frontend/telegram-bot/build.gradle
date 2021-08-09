@@ -9,6 +9,10 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "org.telegram:telegrambots:5.0.1"
+    implementation deps.kotlin.stdlib.jdk
+    implementation deps.telegrambots
+}
+
+application {
+    mainClass = 'com.jakewharton.sdksearch.MainKt'
 }

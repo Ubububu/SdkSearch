@@ -39,7 +39,7 @@ class ItemSynchronizer(
     Timber.debug { "Listing got ${apiItems.size} items" }
 
     val dbItems = apiItems
-        .map { Item.Impl(-1, it.packageName, it.className, it.deprecated, it.link) }
+        .map { Item(-1, it.packageName, it.className, it.deprecated, it.link) }
     try {
       itemStore.updateItems(dbItems)
     } catch (e: RuntimeException) {

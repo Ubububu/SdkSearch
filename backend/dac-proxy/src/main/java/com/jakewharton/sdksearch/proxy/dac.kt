@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BASIC
+import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import okhttp3.logging.HttpLoggingInterceptor.Logger
 import org.jsoup.Jsoup
 import org.slf4j.LoggerFactory
@@ -18,12 +19,15 @@ private val dac = "https://developer.android.com"
 private val urls = listOf(
     "$dac/reference/kotlin/classes?partial=1",
     "$dac/reference/kotlin/androidx/classes?partial=1",
-    //"$dac/reference/kotlin/androidx/ui/classes?partial=1",
     "$dac/reference/androidx/test/classes?partial=1",
     "$dac/reference/androidx/constraintlayout/classes?partial=1",
+    "$dac/reference/android/databinding/classes",
+    "$dac/reference/android/car/classes",
+    "$dac/reference/com/google/android/libraries/car/app/classes",
+    "$dac/reference/android/support/wearable/classes",
     "$dac/reference/com/google/android/material/classes?partial=1",
-    "$dac/reference/com/google/android/play/core/classes?partial=1",
     "$dac/reference/com/android/billingclient/classes?partial=1",
+    "$dac/reference/com/google/android/play/core/classes?partial=1",
     "$dac/reference/com/android/installreferrer/classes?partial=1"
 )
 
@@ -41,7 +45,7 @@ private val client = OkHttpClient.Builder()
     .addInterceptor(HttpLoggingInterceptor(object : Logger {
         override fun log(message: String) = logger.info(message)
       })
-      .apply { level = BASIC }
+      .apply { level = BODY }
     )
     .build()
 

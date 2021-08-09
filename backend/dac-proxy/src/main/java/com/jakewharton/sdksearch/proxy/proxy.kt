@@ -17,7 +17,7 @@ import io.ktor.routing.get
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import kotlin.time.minutes
-import kotlinx.serialization.builtins.list
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import org.slf4j.event.Level
 
@@ -43,5 +43,5 @@ fun main() {
 private val jsonCache = ::listToJson.memoize(expiration = 30.minutes)
 
 private suspend fun listToJson(): String {
-  return Json.stringify(DocumentedType.serializer().list, listDocumentedTypes())
+  return Json.encodeToString(ListSerializer(DocumentedType.serializer()), listDocumentedTypes())
 }
