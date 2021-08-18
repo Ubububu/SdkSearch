@@ -30,6 +30,7 @@ include ':search:ui-telegram-bot'
 include ':store:item'
 include ':store:item:android-sql'
 include ':store:item:js-storage-area'
+include ':store:item:telegram-inmemory'
 include ':sync'
 
 // TODO blocked by https://github.com/Kotlin/kotlinx.coroutines/issues/564

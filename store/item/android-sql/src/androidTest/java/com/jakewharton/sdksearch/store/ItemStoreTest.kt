@@ -2,7 +2,7 @@ package com.jakewharton.sdksearch.store
 
 import androidx.test.InstrumentationRegistry
 import com.jakewharton.sdksearch.store.item.DbComponent
-import com.jakewharton.sdksearch.store.item.Item.Impl
+import com.jakewharton.sdksearch.store.item.Item
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -20,7 +20,7 @@ class ItemStoreTest {
 
   @Test fun query() = runBlocking<Unit> {
     itemStore.updateItems(listOf(
-        Impl(-1, "com.example", "One", false, "one.html")
+      Item(-1, "com.example", "One", false, "one.html")
     ))
 
     itemStore.queryItems("One").test {
@@ -36,7 +36,7 @@ class ItemStoreTest {
 
   @Test fun upsert() = runBlocking<Unit> {
     itemStore.updateItems(listOf(
-        Impl(-1, "com.example", "One", false, "one.html")
+      Item(-1, "com.example", "One", false, "one.html")
     ))
 
     itemStore.queryItems("One").test {
@@ -48,7 +48,7 @@ class ItemStoreTest {
       assertFalse(item1.deprecated)
 
       itemStore.updateItems(listOf(
-          Impl(-1, "com.example", "One", true, "two.html")
+        Item(-1, "com.example", "One", true, "two.html")
       ))
 
       val item2 = expectItem().single()
@@ -64,16 +64,16 @@ class ItemStoreTest {
 
   @Test fun oldItemsDeleted() = runBlocking<Unit> {
     itemStore.updateItems(listOf(
-        Impl(-1, "com.example", "Example1", false, "one.html"),
-        Impl(-1, "com.example", "Example2", false, "two.html")
+      Item(-1, "com.example", "Example1", false, "one.html"),
+      Item(-1, "com.example", "Example2", false, "two.html")
     ))
 
     itemStore.queryItems("Example").test {
       assertEquals(listOf("Example1", "Example2"), expectItem().map { it.className })
 
       itemStore.updateItems(listOf(
-          Impl(-1, "com.example", "Example1", false, "uno.html"),
-          Impl(-1, "com.example", "Example3", false, "tres.html")
+        Item(-1, "com.example", "Example1", false, "uno.html"),
+        Item(-1, "com.example", "Example3", false, "tres.html")
       ))
       assertEquals(listOf("Example1", "Example3"), expectItem().map { it.className })
 
@@ -86,13 +86,13 @@ class ItemStoreTest {
       assertEquals(0, expectItem())
 
       itemStore.updateItems(MutableList(2000) {
-        Impl(-1, "com.example", "Example$it", false, "item.html")
+        Item(-1, "com.example", "Example$it", false, "item.html")
       })
 
       assertEquals(2000, expectItem())
 
       itemStore.updateItems(listOf(
-        Impl(-1, "com.example", "Example0", false, "item.html")
+        Item(-1, "com.example", "Example0", false, "item.html")
       ))
 
       assertEquals(1, expectItem())
@@ -106,14 +106,14 @@ class ItemStoreTest {
       assertEquals(0, expectItem())
 
       itemStore.updateItems(listOf(
-          Impl(-1, "com.example", "One", false, "one.html")
+        Item(-1, "com.example", "One", false, "one.html")
       ))
 
       assertEquals(1, expectItem())
 
       itemStore.updateItems(listOf(
-          Impl(-1, "com.example", "One", false, "one.html"),
-          Impl(-1, "com.example", "Two", false, "two.html")
+        Item(-1, "com.example", "One", false, "one.html"),
+        Item(-1, "com.example", "Two", false, "two.html")
       ))
 
       assertEquals(2, expectItem())
@@ -123,9 +123,9 @@ class ItemStoreTest {
 
   @Test fun wildcards() = runBlocking<Unit> {
     itemStore.updateItems(listOf(
-        Impl(-1, "com.example", "One%Two", false, "percent.html"),
-        Impl(-1, "com.example", "One_Two", false, "underscore.html"),
-        Impl(-1, "com.example", "One\\Two", false, "escape.html")
+      Item(-1, "com.example", "One%Two", false, "percent.html"),
+      Item(-1, "com.example", "One_Two", false, "underscore.html"),
+      Item(-1, "com.example", "One\\Two", false, "escape.html")
     ))
 
     itemStore.queryItems("%").test {

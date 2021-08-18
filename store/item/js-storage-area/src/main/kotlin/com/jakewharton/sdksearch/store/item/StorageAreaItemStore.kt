@@ -3,7 +3,7 @@ package com.jakewharton.sdksearch.store.item
 import com.chrome.platform.storage.StorageArea
 import com.chrome.platform.storage.changes
 import com.chrome.platform.storage.set
-import com.jakewharton.sdksearch.store.item.Item.Impl
+import com.jakewharton.sdksearch.store.item.Item
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -16,7 +16,7 @@ private const val KEY = "items_2"
 private fun Item.toPacked() = arrayOf<Any>(packageName, className, if (deprecated) 1 else 0, link)
 private fun List<Item>.toPacked() = Array(size) { this[it].toPacked() }
 
-private fun unpackItem(value: dynamic): Item = Impl(-1, value[0], value[1], value[2] == 1, value[3])
+private fun unpackItem(value: dynamic): Item = Item(-1, value[0], value[1], value[2] == 1, value[3])
 private fun unpackToItemList(value: dynamic) = (value as Array<Any>).map(::unpackItem)
 
 class StorageAreaItemStore(

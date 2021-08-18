@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+apply plugin: 'org.jetbrains.kotlin.jvm'
+
+dependencies {
+    api project(':store:item')
+
+    implementation deps.kotlin.stdlib.jdk
+
+    testImplementation deps.junit
+}
